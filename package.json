@@ -1,0 +1,24 @@
+{
+  "name": "weather-bar",
+  "productName": "Weather Bar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . --overwrite"
+  },
+  "author": "Cass Chin",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.5",
+    "electron-packager": "^12.2.0",
+    "electron-reload": "^1.2.5"
+  },
+  "dependencies": {
+    "es6-promise": "^4.2.5",
+    "iplocation": "^6.0.2",
+    "isomorphic-fetch": "^2.2.1",
+    "public-ip": "^2.4.0"
+  }
+}
