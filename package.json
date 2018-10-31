@@ -16,6 +16,7 @@
     "electron-reload": "^1.2.5"
   },
   "dependencies": {
+    "async-polling": "^0.2.1",
     "es6-promise": "^4.2.5",
     "iplocation": "^6.0.2",
     "isomorphic-fetch": "^2.2.1",

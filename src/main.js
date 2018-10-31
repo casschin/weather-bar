@@ -1,9 +1,10 @@
 const path = require("path");
+const AsyncPolling = require("async-polling");
+
 const { app, Menu, Tray } = require("electron");
 const location = require("./location");
 const weather = require("./weather");
 const ICONS = require("./icon");
-
 const isEnvSet = "ELECTRON_IS_DEV" in process.env;
 const getFromEnv = parseInt(process.env.ELECTRON_IS_DEV, 10) === 1;
 const isDev = isEnvSet ? getFromEnv : !app.isPackaged;
@@ -21,16 +22,17 @@ let tray;
 const createTray = async () => {
   tray = new Tray(`${iconPath}/fogTemplate.png`);
   const cityState = await location.cityState();
-  const contextMenu = Menu.buildFromTemplate([
-    { label: cityState },
-    {
-      label: "Quit",
-      click: () => {
-        app.quit();
+  tray.setContextMenu(
+    Menu.buildFromTemplate([
+      { label: cityState },
+      {
+        label: "Quit",
+        click: () => {
+          app.quit();
+        }
       }
-    }
-  ]);
-  tray.setContextMenu(contextMenu);
+    ])
+  );
   tray.setToolTip("Weather Bar");
   updateTemperature();
 };
@@ -49,18 +51,17 @@ async function updateTemperature() {
   }
 }
 
-setTimeout(() => {
-  updateTemperature();
-}, 3600000);
+const pollWeather = end => {
+  if (tray) updateTemperature();
+  end();
+};
 
-app.on("ready", () => {
-  createTray();
-});
+AsyncPolling(pollWeather, 3600000).run();
+
+app.on("ready", () => createTray());
 
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+  if (process.platform !== "darwin") app.quit();
 });
 
 if (process.platform === "darwin") app.dock.hide();

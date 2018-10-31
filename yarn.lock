@@ -119,6 +119,11 @@ async-each@^1.0.0:
   resolved "https://registry.yarnpkg.com/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
   integrity sha1-GdOGodntxufByF04iu28xW0zYC0=
 
+async-polling@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/async-polling/-/async-polling-0.2.1.tgz#366175d72dda951fb1c148d0d9edf7412cb02d78"
+  integrity sha1-NmF11y3alR+xwUjQ2e33QSywLXg=
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
