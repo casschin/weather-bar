@@ -1,7 +1,7 @@
 const path = require("path");
 const AsyncPolling = require("async-polling");
 
-const { app, Menu, Tray } = require("electron");
+const { app, Menu, shell, Tray } = require("electron");
 const location = require("./location");
 const weather = require("./weather");
 const ICONS = require("./icon");
@@ -22,9 +22,17 @@ let tray;
 const createTray = async () => {
   tray = new Tray(`${iconPath}/fogTemplate.png`);
   const cityState = await location.cityState();
+  const { lat, long } = await location.latLong();
   tray.setContextMenu(
     Menu.buildFromTemplate([
-      { label: cityState },
+      {
+        label: cityState,
+        click: () => {
+          shell.openExternal(
+            `https://darksky.net/forecast/${lat},${long}/us12/en`
+          );
+        }
+      },
       {
         label: "Quit",
         click: () => {
