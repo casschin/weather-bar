@@ -10,7 +10,7 @@ async function latLong() {
 async function cityState() {
   const ip = await publicIp.v4();
   const location = await iplocation(ip);
-  return `${location.city}, ${location.regionCode}`;
+  return location.city;
 }
 
 module.exports = { latLong, cityState };

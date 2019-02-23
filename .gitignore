@@ -2,3 +2,4 @@
 node_modules
 src/config.js
 Weather*Bar-darwin-x64/
+.vscode/
