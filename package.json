@@ -19,7 +19,7 @@
     "async-polling": "^0.2.1",
     "es6-promise": "^4.2.5",
     "iplocation": "^6.1.0",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "public-ip": "^2.4.0"
   }
 }
