@@ -20,6 +20,6 @@
     "es6-promise": "^4.2.5",
     "iplocation": "^6.1.0",
     "isomorphic-fetch": "^2.2.1",
-    "public-ip": "^2.4.0"
+    "public-ip": "^6.0.1"
   }
 }
